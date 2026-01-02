@@ -1,6 +1,8 @@
 name: Check Empty HTML Files
 description: Fails if any HTML file is empty
+
 runs:
-  using: "composite"
+  using: composite
   steps:
     - run: bash check-empty-html.sh
+      shell: bash
