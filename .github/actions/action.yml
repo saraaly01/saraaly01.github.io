@@ -4,5 +4,5 @@ description: Fails if any HTML file is empty
 runs:
   using: composite
   steps:
-    - run: bash check-empty-html.sh
+    - run: bash "$GITHUB_ACTION_PATH/check-empty-html.sh"
       shell: bash
