@@ -1,39 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Commuter Benefits</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body onload="showElectionMonth()">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commuter Benefits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="showElectionMonth()" class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-xl w-full">
+      <div class="bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-2xl font-semibold text-gray-800">Commuter Calculator</h1>
+        <h2 id="monthTitle" class="text-sm text-gray-500 mt-1"></h2>
 
-<h1>Commuter Calculator</h1>
-<h2 id="monthTitle"></h2>
-<label for="costT">Cost Transit (per day):</label>
-<input type="text" id="costT" name="costT">
-<label for="balanaceT">Balance Transit:</label>
-<input type="text" id="balanaceT" name="balanaceT">
-<br></br>
-<label for="costP">Cost Parking (per day):</label>
-<input type="text" id="costP" name="costP">
-<label for="balanaceP">Balance Parking:</label>
-<input type="text" id="balanaceP" name="balanaceP">
-<br></br>
-<label for="daysEntered">Pick what days you come in:</label>
-<div class="weekday-group">
-    <label><input type="checkbox" name="days" value="1"> M</label>
-    <label><input type="checkbox" name="days" value="2"> T</label>
-    <label><input type="checkbox" name="days" value="3"> W</label>
-    <label><input type="checkbox" name="days" value="4"> Th</label>
-    <label><input type="checkbox" name="days" value="5"> F</label>
-  </div>
-  <br></br>
-<button onclick="calculate()">Calculate</button>
+        <div class="mt-6 grid grid-cols-1 gap-4">
+          <div>
+            <label for="costT" class="block text-gray-700 font-medium">Transit cost (per day)</label>
+            <input id="costT" name="costT" type="number" step="0.01" placeholder="e.g. 3.50"
+              class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
 
+          <div>
+            <label for="costP" class="block text-gray-700 font-medium">Parking cost (per day)</label>
+            <input id="costP" name="costP" type="number" step="0.01" placeholder="e.g. 8.00"
+              class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
 
-<p id="output"></p>
-<p id="output2"></p>
-<p id="output3"></p>
-<script src="script.js"></script>
-</body>
+          <div>
+            <span class="block text-gray-700 font-medium">Pick which weekdays you come in</span>
+            <div class="mt-2 flex gap-2">
+              <label class="inline-flex items-center px-3 py-2 border rounded-md bg-gray-50 cursor-pointer">
+                <input type="checkbox" name="days" value="1" class="mr-2" />
+                <span class="text-sm font-medium">Mon</span>
+              </label>
+              <label class="inline-flex items-center px-3 py-2 border rounded-md bg-gray-50 cursor-pointer">
+                <input type="checkbox" name="days" value="2" class="mr-2" />
+                <span class="text-sm font-medium">Tue</span>
+              </label>
+              <label class="inline-flex items-center px-3 py-2 border rounded-md bg-gray-50 cursor-pointer">
+                <input type="checkbox" name="days" value="3" class="mr-2" />
+                <span class="text-sm font-medium">Wed</span>
+              </label>
+              <label class="inline-flex items-center px-3 py-2 border rounded-md bg-gray-50 cursor-pointer">
+                <input type="checkbox" name="days" value="4" class="mr-2" />
+                <span class="text-sm font-medium">Thu</span>
+              </label>
+              <label class="inline-flex items-center px-3 py-2 border rounded-md bg-gray-50 cursor-pointer">
+                <input type="checkbox" name="days" value="5" class="mr-2" />
+                <span class="text-sm font-medium">Fri</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button onclick="calculate()"
+              class="w-full inline-flex justify-center items-center rounded-md bg-indigo-600 text-white px-4 py-2 font-medium hover:bg-indigo-700">Calculate</button>
+          </div>
+
+          <div class="mt-4 space-y-2">
+            <p id="output" class="text-sm text-gray-600"></p>
+            <p id="output2" class="text-lg font-semibold text-indigo-700"></p>
+            <p id="output3" class="text-lg font-semibold text-indigo-700"></p>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-gray-400 mt-3">Election month shown above — amounts are the total to elect for the entire month (days × per-day cost).</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
